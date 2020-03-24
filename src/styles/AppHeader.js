@@ -3,7 +3,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 export const Styles = makeStyles(theme => ({
       root: {
             display: "flex",
-            flex: theme.isMobile ? 0 : 1
       },
       appBar: {
             zIndex: theme.zIndex.drawer + 1,

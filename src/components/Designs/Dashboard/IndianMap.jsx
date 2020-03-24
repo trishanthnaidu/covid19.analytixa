@@ -14,47 +14,30 @@ import {
       useTheme,
       fade
 } from '../../Core';
-import { scaleQuantile } from "d3-scale";
 import { createStore, StoreManager } from "@rootzjs/store";
 import { Styles } from '../../../styles/Designs/WorldMap';
 import { geoJSONState } from '../../../assets/CSV/GeoJsonIndiaStates';
-import IndianCovidData from '../../../assets/CSV/IndiaCases.json';
 
-// const filterMapping = {
-//       "Population": "POP_EST",
-//       "GDP": "GDP_MD_EST",
-//       "GDP per Capita": "GDP_MD_EST"
-// }
-
-const domianMapping = {
-      "All": [0, 200000000],
-      "": [1000, 4000000],
-      "GDP per Capita": [0, 0.07],
+const labelMaps = {
+      "total_cases": "Total Cases",
+      "total_confirmed_indian_nationals": "Total Cases - Indian Nationals",
+      "total_confirmed_foreign_nationals": "Total Cases - Foreign Nationals",
+      "cured_discharged": "Recovered & Discharged",
+      "death": "Total Deaths",
 }
-
-// const domianMappingBi = {
-//       "Population": [1000, 100000000, 1500000000],
-//       "GDP": [10000, 1000000, 30000000],
-//       "GDP per Capita": [0, 0.07],
-// }
-
-// const domianMappingHeat = {
-//       "Population": [10000, 500000, 7000000, 4000000, 7000000, 10000000, 30000000, 50000000, 100000000, 500000000],
-//       "GDP": [50, 30000, 70000, 100000, 200000, 300000, 1000000, 3000000, 10000000, 15000000],
-//       "GDP per Capita": [0, 0.07]
-// }
 
 export const Maps = ({
       content,
       filterBy = "total_cases",
       options = {
-            height: "70vh",
-            width: "50vw",
+            height: "65vh",
+            width: "48vw",
             zoom: 5.5,
             center: [-1, 9]
       },
       onRegionClick,
       stateStyles = {},
+      data
 }) => {
       const styl = Styles();
       const theme = useTheme();
@@ -62,10 +45,20 @@ export const Maps = ({
       const colorScale = scaleLinear()
             .domain([1, 40])
             .range(["#ffe8e5", theme.palette.primary.main]);
-      debugger;
+
+      const TotalCases = () => {
+            const totalCases = data.reduce((a, b) => a + b[filterBy], 0)
+            return (
+                  <div className={styl.totalCasesContainer}>
+                        <Typography className={styl.labelTotalCasesHeader} color="inherit">{labelMaps[filterBy]}</Typography>
+                        <Typography className={styl.labelTotalCasesText} variant="h6" color="inherit">{totalCases}</Typography>
+                  </div>
+            )
+      }
       return (
             <div className={styl.root}>
                   <Paper elevation={0} className={styl.paperWorldMap}>
+                        <TotalCases />
                         <ComposableMap
                               data-tip=""
                               projection="geoMercator"
@@ -89,7 +82,7 @@ export const Maps = ({
                                                       <>
                                                             {
                                                                   geographies.map(geo => {
-                                                                        const cur = IndianCovidData.find(x => x.state_name.toUpperCase() === geo.properties.name.toUpperCase());
+                                                                        const cur = data.find(x => x.state_name.toUpperCase() === geo.properties.name.toUpperCase());
                                                                         const colorFill = colorScale(cur ? cur[filterBy] : 0) || "#AAAAAAE0";
                                                                         const tooltipContent = `${geo.properties.name} - ${!cur || cur[filterBy] === 0 ? 'NA' : cur[filterBy]}`;
                                                                         return (
@@ -129,15 +122,4 @@ export const Maps = ({
             </div>
       )
 }
-
-const rounded = num => {
-      if (num > 1000000000) {
-            return Math.round(num / 100000000) / 10 + "Bn";
-      } else if (num > 1000000) {
-            return Math.round(num / 100000) / 10 + "M";
-      } else {
-            return Math.round(num / 100) / 10 + "K";
-      }
-};
-
 

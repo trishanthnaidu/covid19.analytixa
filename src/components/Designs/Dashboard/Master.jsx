@@ -16,6 +16,8 @@ import { Styles } from '../../../styles/Designs/Dashboard';
 import { Filter } from './FilterSeletion';
 import { Maps } from './IndianMap';
 import { TopBottomFilter } from './TopBottomFilterSelection';
+import { CaseAnalysis } from './CaseAnalysis';
+import { CaseSharePercentange } from './CaseSharePercentange';
 
 const DashboardComponent = ({
       state
@@ -28,16 +30,26 @@ const DashboardComponent = ({
                               <div className={styl.mapContainer}>
                                     <div className={styl.mapFiterContainer}>
                                           <Typography className={styl.title} variant="h6" color="inherit">
-                                                Regional Impact
+                                                Affected Areas
                                           </Typography>
                                           <Filter />
                                     </div>
                                     <MapsInsights {...state} />
                               </div>
                         </Grid>
-                        <Grid container className={styl.topAndBottomContainer}>
-                              <TopBottomFilter {...state} />
-                        </Grid>
+                        <div className={styl.statsticalAnalysisContainer}>
+                              <div className={styl.columnContainer}>
+                                    <Grid container className={styl.topAndBottomContainer}>
+                                          <TopBottomFilter {...state} />
+                                    </Grid>
+                                    <Grid container className={`${styl.topAndBottomContainer} ${styl.totalActiveCasesContainer}`}>
+                                          <CaseSharePercentange {...state} />
+                                    </Grid>
+                              </div>
+                              <Grid container className={`${styl.topAndBottomContainer} ${styl.caseAnalysisContainer}`}>
+                                    <CaseAnalysis />
+                              </Grid>
+                        </div>
                   </div>
             </Fragment>
       )
@@ -55,6 +67,7 @@ const MapsInsights = createStore({
 export const Dashboard = createStore({
       storeID: "#Dashboard",
       Component: DashboardComponent,
+      mapAllPropsToState: true,
       state: {
             region: "India",
             type: "MONO_CHOROPLETH",

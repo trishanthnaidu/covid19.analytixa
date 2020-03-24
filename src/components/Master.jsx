@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer, useState, Fragment } from 'react';
 import { AppHeader } from "./AppHeader";
-import { AppDrawer } from "./AppDrawer";
 import { Playground } from './Playground';
 import { Styles } from "../styles/Master";
 import { AppTheme } from '../theme/App';
@@ -49,7 +48,6 @@ const Designs = props => {
                   {
                         !props.didSomethingWentWrong ?
                               <Fragment>
-                                    <AppDrawer {...props} />
                                     <Playground {...props} />
                               </Fragment>
                               :

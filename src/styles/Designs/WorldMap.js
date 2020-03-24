@@ -2,7 +2,7 @@ import { makeStyles, fade } from "@material-ui/core/styles";
 
 export const Styles = makeStyles(theme => ({
       root: {
-            
+
       },
       states: {
             outline: "none",
@@ -31,7 +31,8 @@ export const Styles = makeStyles(theme => ({
             borderRadius: 10,
 
             "& svg": {
-                  marginTop: 25,
+                  marginTop: -50,
+                  marginLeft: -35,
                   transform: "scale(1.4)",
             },
 
@@ -46,5 +47,19 @@ export const Styles = makeStyles(theme => ({
             "& .__react_component_tooltip.type-dark.place-top:after": {
                   borderTopColor: theme.palette.secondary.main
             }
+      },
+      totalCasesContainer: {
+            display: "flex",
+            margin: "25px 40px",
+            flexDirection: "column",
+            float: "right",
+            alignItems: "flex-end"
+      },
+      labelTotalCasesHeader: {
+            color: theme.text[40]
+      },
+      labelTotalCasesText: {
+            fontSize: 25,
+            color: theme.palette.primary.main
       }
 }))

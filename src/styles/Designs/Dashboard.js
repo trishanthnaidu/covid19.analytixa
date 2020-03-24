@@ -12,7 +12,9 @@ export const Styles = makeStyles(theme => ({
       },
       toggleButtonGroup: {
             backgroundColor: "transparent",
-            margin: 20,
+            margin: "0 20px",
+            flex: 1,
+            justifyContent: "flex-end",
 
             "& button": {
                   padding: "0px 15px",
@@ -32,6 +34,9 @@ export const Styles = makeStyles(theme => ({
             "& .MuiToggleButton-root:hover": {
                   backgroundColor: theme.background["00"],
             }
+      },
+      btnToggle: {
+            flex: 1
       },
       toggleContainer: {
             display: 'flex',
@@ -58,7 +63,7 @@ export const Styles = makeStyles(theme => ({
       ƒilterContainer: {
             backgroundColor: "transparent",
             display: "flex",
-            height: 75,
+            height: 60,
             justifyContent: "center",
             borderRadius: 0,
             borderTopRightRadius: 10,
@@ -136,7 +141,8 @@ export const Styles = makeStyles(theme => ({
             justifyContent: "space-between",
             flexDirection: "column",
             display: "inline-flex",
-            margin: 10
+            margin: "1vw",
+            width: "50vw"
       },
       mapContainer: {
             display: "flex",
@@ -159,13 +165,13 @@ export const Styles = makeStyles(theme => ({
       },
       // Top Bottom
       topAndBottomContainer: {
-            width: "35vw",
-            height: "89vh",
+            width: "22vw",
+            height: 325,
             display: "inline-flex",
             flexDirection: "column",
             backgroundColor: theme.background[30],
             flexDirection: "column",
-            margin: 10,
+            margin: "1vw",
             borderRadius: 10,
       },
       topSelection: {},
@@ -224,5 +230,46 @@ export const Styles = makeStyles(theme => ({
       },
       dataLabels: {
 
-      }
+      },
+      statsticalAnalysisContainer: {
+            display: "flex",
+            flexDirection: "column"
+      },
+      columnContainer: {
+            display: "flex",
+            flexDirection: "row"
+      },
+      titleContainer: {
+            backgroundColor: theme.background[30],
+            display: "flex",
+            height: 60,
+            justifyContent: "flex-start",
+            borderRadius: 0,
+            borderTopRightRadius: 10,
+            borderTopLeftRadius: 10,
+            alignItems: "center",
+
+            "& button": {
+                  backgroundColor: theme.background[40],
+                  color: theme.text[50]
+            }
+      },
+      totalActiveCasesContainer: {
+            backgroundColor: theme.background["00"],
+      },
+      caseAnalysisContainer: {
+            backgroundColor: theme.background["00"],
+            width: "46vw"
+      },
+      paperPieChart: {
+            backgroundColor: "transparent",
+
+            "& div.highcharts-container svg .highcharts-background": {
+                  fill: "transparent",
+            },
+
+            "& div.highcharts-container svg path.highcharts-crosshair": {
+                  stroke: fade(theme.palette.primary.main, 0.075),
+            }
+      },
 }))

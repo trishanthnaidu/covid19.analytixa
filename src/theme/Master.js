@@ -1,5 +1,5 @@
-export const PRIMARY_COLOR = "#4775FF";
-export const STUDIO_COLOR = "#E91D63";
+export const PRIMARY_COLOR = "#FB5434";
+export const STUDIO_COLOR = "#4675FF";
 export const PRIMARY_FONT_SIZE = 13;
 export const DARK_THEME_PROPS = {
       TYPE: "dark",
