@@ -47,7 +47,7 @@ const DashboardComponent = ({
                                     </Grid>
                               </div>
                               <Grid container className={`${styl.topAndBottomContainer} ${styl.caseAnalysisContainer}`}>
-                                    <CaseAnalysis />
+                                    <CaseAnalysis {...state} />
                               </Grid>
                         </div>
                   </div>

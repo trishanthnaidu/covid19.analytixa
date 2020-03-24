@@ -21,6 +21,7 @@ import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsRoundedCorners from 'yarn-highcharts-rounded-corners';
 
 import { Styles } from '../../../styles/Designs/Dashboard';
+import { StateSelection } from './StateSelection';
 
 HighchartsRoundedCorners(Highcharts);
 HighchartsMore(Highcharts);
@@ -112,16 +113,11 @@ export const CaseAnalysis = createStore({
             <Grid item sm={8} md={12} style={{ padding: 0 }}>
                 <Paper elevation={0} className={styl.titleContainer}>
                     <Typography className={styl.title} variant="h6" color="inherit">
-                        Case Analysis
+                        Regional Analysis
                     </Typography>
+                    <StateSelection />
                 </Paper>
-                {
-                    state.data &&
-                    <VerticalBarChart
-                        categories={state.topBottomBy === "Top 20 Regions" ? topRegions : bottomRegions}
-                        data={state.topBottomBy === "Top 20 Regions" ? topRegionsData : bottomRegionsData}
-                    />
-                }
+                <div className={styl.comingSoon}>Coming Soon</div>
             </Grid>
         )
     },

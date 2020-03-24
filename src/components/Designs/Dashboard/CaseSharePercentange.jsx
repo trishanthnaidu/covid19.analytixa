@@ -29,10 +29,12 @@ HighchartBoost(Highcharts);
 HighchartVariablePie(Highcharts);
 HighchartSolidGauge(Highcharts);
 
-const GaugeChart = ({ data, caseBy }) => {
+const GaugeChart = ({ data, caseBy, filterBy }) => {
     const styl = Styles();
     const theme = useTheme();
     const totalCase = data.reduce((a, b) => a + b["total_cases"], 0);
+    const totalIndianCase = data.reduce((a, b) => a + b["total_confirmed_indian_nationals"], 0);
+    const totalForeignCase = data.reduce((a, b) => a + b["total_confirmed_foreign_nationals"], 0);
     const cured = data.reduce((a, b) => a + b["cured_discharged"], 0);
     const death = data.reduce((a, b) => a + b["death"], 0);
     const chartConfigForPercentage = {
@@ -54,10 +56,10 @@ const GaugeChart = ({ data, caseBy }) => {
             backgroundColor: 'none',
             shadow: false,
             style: {
-                fontSize: '16px'
+                fontSize: '13px'
             },
             valueSuffix: '%',
-            pointFormat: '<span style="color: ' + theme.text[40] + 'font-size:20px; color: {point.color}; font-weight: bold; text-align: center"><b>{series.name}</b></span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
+            pointFormat: '<span style="color: ' + theme.text[30] + ';font-size:13px;">{series.name}</span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
             positioner: function (labelWidth) {
                 return {
                     x: (this.chart.chartWidth / 2) - (labelWidth / 2),
@@ -165,7 +167,7 @@ const DonutChart = ({ data, caseBy }) => {
                 fontSize: '16px'
             },
             headerFormat: "",
-            pointFormat: '<span style="color: ' + theme.text[40] + 'font-size:20px; color: {point.color}; font-weight: bold; text-align: center"><b>{point.name}</b></span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
+            pointFormat: '<span style="color: ' + theme.text[30] + ';font-size:13px;">{point.name}</span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
             positioner: function (labelWidth) {
                 return {
                     x: (this.chart.chartWidth / 2) - (labelWidth / 2),

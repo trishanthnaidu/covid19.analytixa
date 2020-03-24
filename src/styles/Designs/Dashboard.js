@@ -100,24 +100,6 @@ export const Styles = makeStyles(theme => ({
             borderTopLeftRadius: 10,
             alignItems: "center"
       },
-      btnCountrySelection: {
-            padding: "0 15px",
-            textTransform: "capitalize",
-            color: theme.palette.primary.main,
-            backgroundColor: fade(theme.background["00"], 0.9),
-            border: `solid 1px ${fade(theme.text[50], 0.25)}`,
-            fontSize: theme.typography.body1.fontSize,
-            height: 32,
-            margin: 20,
-
-            "&:hover": {
-                  backgroundColor: theme.background["00"],
-            },
-
-            "& svg": {
-                  fontSize: 18
-            }
-      },
       btnYear: {
             padding: "0 5px 0 10px",
             textTransform: "capitalize",
@@ -169,7 +151,7 @@ export const Styles = makeStyles(theme => ({
             height: 325,
             display: "inline-flex",
             flexDirection: "column",
-            backgroundColor: theme.background[30],
+            backgroundColor: "#fed8d2",
             flexDirection: "column",
             margin: "1vw",
             borderRadius: 10,
@@ -243,7 +225,7 @@ export const Styles = makeStyles(theme => ({
             backgroundColor: theme.background[30],
             display: "flex",
             height: 60,
-            justifyContent: "flex-start",
+            justifyContent: "space-between",
             borderRadius: 0,
             borderTopRightRadius: 10,
             borderTopLeftRadius: 10,
@@ -259,7 +241,8 @@ export const Styles = makeStyles(theme => ({
       },
       caseAnalysisContainer: {
             backgroundColor: theme.background["00"],
-            width: "46vw"
+            width: "46vw",
+            height: 350
       },
       paperPieChart: {
             backgroundColor: "transparent",
@@ -272,4 +255,29 @@ export const Styles = makeStyles(theme => ({
                   stroke: fade(theme.palette.primary.main, 0.075),
             }
       },
+      btnCountrySelection: {
+            padding: "0 15px",
+            textTransform: "capitalize",
+            color: theme.palette.primary.main,
+            backgroundColor: fade(theme.background["00"], 0.9),
+            border: `solid 1px ${fade(theme.text[50], 0.25)}`,
+            fontSize: theme.typography.body1.fontSize,
+            height: 32,
+            margin: "0 20px",
+
+            "&:hover": {
+                  backgroundColor: theme.background["00"],
+            },
+
+            "& svg": {
+                  fontSize: 18
+            }
+      },
+      comingSoon: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 300,
+            color: theme.text[50]
+      }
 }))

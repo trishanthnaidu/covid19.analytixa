@@ -24,6 +24,9 @@ export const Filter = createStore({
                   StoreManager.update("#TopBottomFilter", {
                         filterBy
                   })
+                  StoreManager.update("#CaseSharePercentange", {
+                        filterBy
+                  })
             }
             return (
                   <Grid item sm={6} md={8} style={{ padding: 0 }}>
