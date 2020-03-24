@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "57a7b758e7d788d6784b9fb027a3471e",
+    "revision": "a71c5f00214e4071e3aea25aed5588e5",
     "url": "/covid19.analytixa/index.html"
   },
   {
-    "revision": "f0a16464633072358db2",
+    "revision": "7c1d5f913e61261c8939",
     "url": "/covid19.analytixa/static/css/main.696af4a9.chunk.css"
   },
   {
-    "revision": "4a2794941d0a3b99bb8b",
-    "url": "/covid19.analytixa/static/js/2.e2a396cd.chunk.js"
+    "revision": "2ed325a48f85aaa179d6",
+    "url": "/covid19.analytixa/static/js/2.c9d5650d.chunk.js"
   },
   {
     "revision": "28a1fc5009c1bf13429848ff06c0f026",
-    "url": "/covid19.analytixa/static/js/2.e2a396cd.chunk.js.LICENSE.txt"
+    "url": "/covid19.analytixa/static/js/2.c9d5650d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f0a16464633072358db2",
-    "url": "/covid19.analytixa/static/js/main.b6962f9b.chunk.js"
+    "revision": "7c1d5f913e61261c8939",
+    "url": "/covid19.analytixa/static/js/main.1550f05a.chunk.js"
   },
   {
     "revision": "2213ccbd5712447d4f4a",
