@@ -32,8 +32,8 @@ export const Styles = makeStyles(theme => ({
 
             "& svg": {
                   marginTop: !theme.isMobile && -50,
-                  marginLeft: theme.isMobile ? "-22vw" : -35,
-                  transform: theme.isMobile ? "scale(1.5)" : "scale(1.4)",
+                  marginLeft: !theme.isMobile && -35,
+                  transform: theme.isMobile ? "scale(1)" : "scale(1.4)",
             },
 
             "& .__react_component_tooltip": {

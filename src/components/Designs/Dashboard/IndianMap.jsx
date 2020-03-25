@@ -32,8 +32,8 @@ export const Maps = ({
       options = {
             height: "65vh",
             width: "48vw",
-            zoom: 5.5,
-            center: [-1, 9]
+            zoom: 9.75,
+            center: [2.5, 5]
       },
       onRegionClick,
       stateStyles = {},
@@ -64,8 +64,8 @@ export const Maps = ({
                               projection="geoMercator"
                               className={styl.projection}
                               style={{
-                                    height: theme.isMobile ? "46vh" : options.height,
-                                    width: theme.isMobile ? "115vw" : options.width
+                                    height: theme.isMobile ? "65vh" : options.height,
+                                    width: theme.isMobile ? "91vw" : options.width
                               }}
                         >
                               <ZoomableGroup
