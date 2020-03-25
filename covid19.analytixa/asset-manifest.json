@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/covid19.analytixa/static/css/main.696af4a9.chunk.css",
-    "main.js": "/covid19.analytixa/static/js/main.3596bc2c.chunk.js",
-    "main.js.map": "/covid19.analytixa/static/js/main.3596bc2c.chunk.js.map",
+    "main.js": "/covid19.analytixa/static/js/main.3b7ff130.chunk.js",
+    "main.js.map": "/covid19.analytixa/static/js/main.3b7ff130.chunk.js.map",
     "runtime-main.js": "/covid19.analytixa/static/js/runtime-main.5fc9eb5b.js",
     "runtime-main.js.map": "/covid19.analytixa/static/js/runtime-main.5fc9eb5b.js.map",
     "static/css/2.ca79aa8d.chunk.css": "/covid19.analytixa/static/css/2.ca79aa8d.chunk.css",
-    "static/js/2.3eeae124.chunk.js": "/covid19.analytixa/static/js/2.3eeae124.chunk.js",
-    "static/js/2.3eeae124.chunk.js.map": "/covid19.analytixa/static/js/2.3eeae124.chunk.js.map",
+    "static/js/2.4f32029f.chunk.js": "/covid19.analytixa/static/js/2.4f32029f.chunk.js",
+    "static/js/2.4f32029f.chunk.js.map": "/covid19.analytixa/static/js/2.4f32029f.chunk.js.map",
     "index.html": "/covid19.analytixa/index.html",
-    "precache-manifest.7383c2f892525112d49e42faa76edc2f.js": "/covid19.analytixa/precache-manifest.7383c2f892525112d49e42faa76edc2f.js",
+    "precache-manifest.cd6b8e212e83bc630015338f3bdaee73.js": "/covid19.analytixa/precache-manifest.cd6b8e212e83bc630015338f3bdaee73.js",
     "service-worker.js": "/covid19.analytixa/service-worker.js",
     "static/css/2.ca79aa8d.chunk.css.map": "/covid19.analytixa/static/css/2.ca79aa8d.chunk.css.map",
     "static/css/main.696af4a9.chunk.css.map": "/covid19.analytixa/static/css/main.696af4a9.chunk.css.map",
-    "static/js/2.3eeae124.chunk.js.LICENSE.txt": "/covid19.analytixa/static/js/2.3eeae124.chunk.js.LICENSE.txt",
+    "static/js/2.4f32029f.chunk.js.LICENSE.txt": "/covid19.analytixa/static/js/2.4f32029f.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/covid19.analytixa/static/media/logo.aadfc5e2.svg",
     "static/media/logo1.svg": "/covid19.analytixa/static/media/logo1.59d8bb2b.svg",
     "static/media/somethingWentWrongDark.svg": "/covid19.analytixa/static/media/somethingWentWrongDark.485713aa.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.5fc9eb5b.js",
     "static/css/2.ca79aa8d.chunk.css",
-    "static/js/2.3eeae124.chunk.js",
+    "static/js/2.4f32029f.chunk.js",
     "static/css/main.696af4a9.chunk.css",
-    "static/js/main.3596bc2c.chunk.js"
+    "static/js/main.3b7ff130.chunk.js"
   ]
 }
