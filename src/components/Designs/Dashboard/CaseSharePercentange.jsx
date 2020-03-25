@@ -42,7 +42,7 @@ const GaugeChart = ({ data, caseBy, filterBy }) => {
         chart: {
             ...theme.chartConfig.chart,
             type: "solidgauge",
-            height: theme.isMobile ? 375 : 275
+            height: theme.isMobile ? 350 : 275
         },
         colors: [`${theme.palette.primary.main}40`, `${theme.palette.primary.main}60`, `${theme.palette.primary.main}A0`],
         xAxis: {
@@ -150,7 +150,7 @@ const DonutChart = ({ data, caseBy }) => {
         chart: {
             ...theme.chartConfig.chart,
             type: "pie",
-            height: theme.isMobile ? 375 : 275
+            height: theme.isMobile ? 350 : 275
         },
         colors: [`${theme.palette.primary.main}40`, `${theme.palette.primary.main}60`, `${theme.palette.primary.main}A0`],
         xAxis: {

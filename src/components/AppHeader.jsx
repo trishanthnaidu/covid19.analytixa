@@ -54,14 +54,9 @@ export const AppHeader = ({ route }) => {
             <div className={styl.root}>
                   <AppBar position="fixed" className={styl.appBar}>
                         <Toolbar variant="dense">
-                              {
-                                    theme.isMobile ?
-                                          <MobileToolbar />
-                                          :
-                                          <DesktopToolbar />
-                              }
+                              <DesktopToolbar />
                               <Typography className={styl.routeTitle} variant="h6" color="inherit">
-                              {route.title} - Covid19
+                                    {route.title} - Covid19
                               </Typography>
                         </Toolbar>
                   </AppBar>

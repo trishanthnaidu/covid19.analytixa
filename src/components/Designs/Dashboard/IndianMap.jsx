@@ -64,8 +64,8 @@ export const Maps = ({
                               projection="geoMercator"
                               className={styl.projection}
                               style={{
-                                    height: options.height,
-                                    width: options.width
+                                    height: theme.isMobile ? "46vh" : options.height,
+                                    width: theme.isMobile ? "115vw" : options.width
                               }}
                         >
                               <ZoomableGroup

@@ -67,5 +67,5 @@ export const commonThemeStyles = selectedTheme => ({
                   }
             }
       },
-      isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      isMobile: /Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 });

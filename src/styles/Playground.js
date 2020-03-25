@@ -7,6 +7,6 @@ export const Styles = makeStyles(theme => ({
             padding: "12px 15px",
             boxSizing: "border-box",
             marginTop: 50,
-            overflowY: "hidden",
+            overflowY: theme.isMobile ? "auto" : "hidden",
       },
 }))

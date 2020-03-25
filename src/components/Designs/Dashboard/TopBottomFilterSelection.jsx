@@ -33,7 +33,7 @@ const VerticalBarChart = ({ categories, data }) => {
                   ...theme.chartConfig.chart,
                   type: "bar",
                   inverted: true,
-                  height: theme.isMobile ? "480px" : "280px",
+                  height: theme.isMobile ? "350px" : "280px",
             },
             colors: [theme.palette.primary.main + "80"],
             xAxis: {

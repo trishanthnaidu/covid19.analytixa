@@ -3,7 +3,8 @@ import { makeStyles, fade } from "@material-ui/core/styles";
 export const Styles = makeStyles(theme => ({
       root: {
             justifyContent: "center",
-            display: "flex"
+            display: "flex",
+            flexDirection: theme.isMobile ? "column" : "row"
       },
       labels: {
             color: theme.text[40],
@@ -17,7 +18,7 @@ export const Styles = makeStyles(theme => ({
             justifyContent: "flex-end",
 
             "& button": {
-                  padding: "0px 15px",
+                  padding: !theme.isMobile && "0px 15px",
                   height: 32,
                   fontSize: theme.typography.body1.fontSize,
                   backgroundColor: fade(theme.background["00"], 0.5),
@@ -124,9 +125,10 @@ export const Styles = makeStyles(theme => ({
             flexDirection: "column",
             display: "inline-flex",
             margin: "1vw",
-            width: "50vw"
+            width: theme.isMobile ? "91vw" : "50vw"
       },
       mapContainer: {
+            width: theme.isMobile && "91vw",
             display: "flex",
             flexDirection: "column",
             borderRadius: 10,
@@ -134,7 +136,7 @@ export const Styles = makeStyles(theme => ({
       },
       mapFiterContainer: {
             display: "inline-flex",
-            justifyContent: "space-between",
+            justifyContent: theme.isMobile ? "center" : "space-between",
             zIndex: 10,
       },
       title: {
@@ -143,12 +145,12 @@ export const Styles = makeStyles(theme => ({
             fontWeight: 400,
             fontSize: 18,
             alignItems: "center",
-            display: "inline-flex"
+            display: theme.isMobile ? "none" : "inline-flex"
       },
       // Top Bottom
       topAndBottomContainer: {
-            width: "22vw",
-            height: 325,
+            width: theme.isMobile ? "91vw" : "22vw",
+            height: theme.isMobile ? 400 : 325,
             display: "inline-flex",
             flexDirection: "column",
             backgroundColor: "#fed8d2",
@@ -219,7 +221,7 @@ export const Styles = makeStyles(theme => ({
       },
       columnContainer: {
             display: "flex",
-            flexDirection: "row"
+            flexDirection: theme.isMobile ? "column" : "row"
       },
       titleContainer: {
             backgroundColor: theme.background[30],
@@ -241,7 +243,7 @@ export const Styles = makeStyles(theme => ({
       },
       caseAnalysisContainer: {
             backgroundColor: theme.background["00"],
-            width: "46vw",
+            width: theme.isMobile ? "91vw": "46vw",
             height: 350
       },
       paperPieChart: {

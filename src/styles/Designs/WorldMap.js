@@ -31,9 +31,9 @@ export const Styles = makeStyles(theme => ({
             borderRadius: 10,
 
             "& svg": {
-                  marginTop: -50,
-                  marginLeft: -35,
-                  transform: "scale(1.4)",
+                  marginTop: !theme.isMobile && -50,
+                  marginLeft: theme.isMobile ? "-22vw" : -35,
+                  transform: theme.isMobile ? "scale(1.5)" : "scale(1.4)",
             },
 
             "& .__react_component_tooltip": {
