@@ -7,6 +7,7 @@ import {
       Geographies,
       Geography,
       ZoomableGroup,
+      Marker
 } from "react-simple-maps";
 import {
       Typography,
@@ -14,6 +15,7 @@ import {
       useTheme,
       fade
 } from '../../Core';
+import { geoCentroid } from "d3-geo";
 import { createStore, StoreManager } from "@rootzjs/store";
 import { Styles } from '../../../styles/Designs/WorldMap';
 import { geoJSONState } from '../../../assets/CSV/GeoJsonIndiaStates';
@@ -32,8 +34,8 @@ export const Maps = ({
       options = {
             height: "65vh",
             width: "48vw",
-            zoom: 9.75,
-            center: [2.5, 5]
+            zoom: 5.5,
+            center: [-1, 9],
       },
       onRegionClick,
       stateStyles = {},
@@ -42,6 +44,7 @@ export const Maps = ({
       const styl = Styles();
       const theme = useTheme();
       const centerConst = [-280, 15];
+      const totalCaseThreshold = data.reduce((a, b) => a + b["total_cases"], 0) / 20;
       const colorScale = scaleLinear()
             .domain([1, 40])
             .range(["#ffe8e5", theme.palette.primary.main]);
@@ -55,10 +58,11 @@ export const Maps = ({
                   </div>
             )
       }
+      debugger;
       return (
             <div className={styl.root}>
                   <Paper elevation={0} className={styl.paperWorldMap}>
-                        <TotalCases />
+                        {theme.isMobile || <TotalCases />}
                         <ComposableMap
                               data-tip=""
                               projection="geoMercator"
@@ -69,10 +73,10 @@ export const Maps = ({
                               }}
                         >
                               <ZoomableGroup
-                                    zoom={options.zoom}
+                                    zoom={theme.isMobile ? 9.7 : options.zoom}
                                     disableZooming={true}
                                     disablePanning={true}
-                                    center={[centerConst[0] + options.center[0], centerConst[1] + options.center[1]]}
+                                    center={!theme.isMobile ? [centerConst[0] + options.center[0], centerConst[1] + options.center[1]] : [centerConst[0] + 2.5, centerConst[1] + 5]}
                               >
                                     <Geographies
                                           geography={geoJSONState}
@@ -108,6 +112,24 @@ export const Maps = ({
                                                                                     }}
                                                                                     {...stateStyles}
                                                                               />
+                                                                        );
+                                                                  })
+                                                            }
+                                                            {
+                                                                  geographies.map(geo => {
+                                                                        const centroid = geoCentroid(geo);
+                                                                        const cur = data.find(x => x.state_name.toUpperCase() === geo.properties.name.toUpperCase());
+                                                                        return (
+                                                                              <g key={geo.rsmKey + "-name"} className="hello">
+                                                                                    {cur &&
+
+                                                                                          <Marker coordinates={centroid}>
+                                                                                                <text y="0" fontSize={2} textAnchor="middle" fill={`${cur[filterBy] > totalCaseThreshold ? "#FFF" : "#222"}`}>
+                                                                                                      {cur[filterBy]}
+                                                                                                </text>
+                                                                                          </Marker>
+                                                                                    }
+                                                                              </g>
                                                                         );
                                                                   })
                                                             }

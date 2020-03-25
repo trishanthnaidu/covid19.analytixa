@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Dashboard } from '../Designs/Dashboard/Master';
-
+import { Dashboard as DashboardMobile } from '../Designs/Dashboard/MasterMobile';
+import { useTheme } from '../Core';
 import { Styles } from '../../styles/Playground';
 import { createStore, StoreManager } from '@rootzjs/store';
 
 const Component = ({ props, state }) => {
       const styl = Styles();
+      const theme = useTheme();
       useEffect(() => {
             const URL = 'https://www.mohfw.gov.in/';
             fetch(URL)
@@ -22,6 +24,7 @@ const Component = ({ props, state }) => {
                                                 sr_number: row.cells[0].textContent,
                                                 state_name: row.cells[1].textContent,
                                                 total_cases: parseInt(row.cells[2].textContent) + parseInt(row.cells[3].textContent),
+                                                active_cases: parseInt(row.cells[2].textContent) + parseInt(row.cells[3].textContent) - (parseInt(row.cells[4].textContent) + parseInt(row.cells[5].textContent)),
                                                 total_confirmed_indian_nationals: parseInt(row.cells[2].textContent),
                                                 total_confirmed_foreign_nationals: parseInt(row.cells[3].textContent),
                                                 cured_discharged: parseInt(row.cells[4].textContent),
@@ -49,7 +52,7 @@ const Component = ({ props, state }) => {
                   <div id="main-container" className={styl.root}>
                         {
                               state.isMounted ?
-                                    <Dashboard {...state} />
+                                    theme.isMobile ? <DashboardMobile {...state} /> : <Dashboard {...state} />
                                     :
                                     <div>Fetching Data</div>
                         }

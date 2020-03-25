@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import {
     Grid,
     Typography,
@@ -29,128 +29,15 @@ HighchartBoost(Highcharts);
 HighchartVariablePie(Highcharts);
 HighchartSolidGauge(Highcharts);
 
-const GaugeChart = ({ data, caseBy, filterBy }) => {
+const DonutChart = ({ totalCase, cured, death }) => {
     const styl = Styles();
     const theme = useTheme();
-    const totalCase = data.reduce((a, b) => a + b["total_cases"], 0);
-    const totalIndianCase = data.reduce((a, b) => a + b["total_confirmed_indian_nationals"], 0);
-    const totalForeignCase = data.reduce((a, b) => a + b["total_confirmed_foreign_nationals"], 0);
-    const cured = data.reduce((a, b) => a + b["cured_discharged"], 0);
-    const death = data.reduce((a, b) => a + b["death"], 0);
-    const chartConfigForPercentage = {
-        ...theme.chartConfig,
-        chart: {
-            ...theme.chartConfig.chart,
-            type: "solidgauge",
-            height: theme.isMobile ? 350 : 275
-        },
-        colors: [`${theme.palette.primary.main}40`, `${theme.palette.primary.main}60`, `${theme.palette.primary.main}A0`],
-        xAxis: {
-            ...theme.chartConfig.xAxis,
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true,
-        },
-        tooltip: {
-            borderWidth: 0,
-            backgroundColor: 'none',
-            shadow: false,
-            style: {
-                fontSize: '13px'
-            },
-            valueSuffix: '%',
-            pointFormat: '<span style="color: ' + theme.text[30] + ';font-size:13px;">{series.name}</span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
-            positioner: function (labelWidth) {
-                return {
-                    x: (this.chart.chartWidth / 2) - (labelWidth / 2),
-                    y: (this.chart.plotHeight / 2) - (this.label.height / 3)
-                };
-            }
-        },
-        pane: {
-            startAngle: 0,
-            endAngle: 360,
-            background: [{
-                outerRadius: '108%',
-                innerRadius: '91%',
-                backgroundColor: Highcharts.color(`${theme.palette.primary.main}20`)
-                    .setOpacity(0.1)
-                    .get(),
-                borderWidth: 0
-            }, {
-                outerRadius: '90%',
-                innerRadius: '73%',
-                backgroundColor: Highcharts.color(`${theme.palette.primary.main}20`)
-                    .setOpacity(0.1)
-                    .get(),
-                borderWidth: 0
-            }, {
-                outerRadius: '72%',
-                innerRadius: '55%',
-                backgroundColor: Highcharts.color(`${theme.palette.primary.main}20`)
-                    .setOpacity(0.1)
-                    .get(),
-                borderWidth: 0
-            }]
-        },
-        yAxis: {
-            min: 0,
-            max: 100,
-            lineWidth: 0,
-            tickPositions: []
-        },
-        series: [
-            {
-                name: "Active",
-                data: [{
-                    color: `${theme.palette.primary.main}A0`,
-                    radius: '108%',
-                    innerRadius: '91%',
-                    y: Math.round((((totalCase - (cured + death)) / totalCase) * 100)),
-                }],
-            },
-            {
-                name: "Cured",
-                data: [{
-                    color: `${theme.palette.primary.main}80`,
-                    radius: '90%',
-                    innerRadius: '73%',
-                    y: Math.round(((cured / totalCase) * 100)),
-                }],
-            },
-            {
-                name: "Death",
-                data: [{
-                    color: `${theme.palette.primary.main}60`,
-                    radius: '72%',
-                    innerRadius: '55%',
-                    y: Math.round(((death / totalCase) * 100)),
-                }],
-            },
-        ],
-    }
-    return (
-        <Paper elevation={0} className={styl.paperPieChart}>
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={chartConfigForPercentage}>
-            </HighchartsReact>
-        </Paper>
-    )
-}
-
-const DonutChart = ({ data, caseBy }) => {
-    const styl = Styles();
-    const theme = useTheme();
-    const totalCase = data.reduce((a, b) => a + b["total_cases"], 0);
-    const cured = data.reduce((a, b) => a + b["cured_discharged"], 0);
-    const death = data.reduce((a, b) => a + b["death"], 0);
     const chartConfigForShare = {
         ...theme.chartConfig,
         chart: {
             ...theme.chartConfig.chart,
             type: "pie",
-            height: theme.isMobile ? 350 : 275
+            height: theme.isMobile ? 250 : 275
         },
         colors: [`${theme.palette.primary.main}40`, `${theme.palette.primary.main}60`, `${theme.palette.primary.main}A0`],
         xAxis: {
@@ -167,6 +54,7 @@ const DonutChart = ({ data, caseBy }) => {
                 fontSize: '16px'
             },
             headerFormat: "",
+            valueSuffix: '%',
             pointFormat: '<span style="color: ' + theme.text[30] + ';font-size:13px;">{point.name}</span><br><span style="font-size:25px; text-align: center; color: ' + theme.palette.primary.main + '">{point.y}</span>',
             positioner: function (labelWidth) {
                 return {
@@ -185,14 +73,14 @@ const DonutChart = ({ data, caseBy }) => {
                 zMin: 0,
                 data: [{
                     name: "Active",
-                    y: totalCase - (cured + death),
+                    y: Math.round((((totalCase - (cured + death)) / totalCase) * 100)),
                     selected: true,
                 }, {
                     name: "Cured",
-                    y: cured,
+                    y: Math.round(((cured / totalCase) * 100)),
                 }, {
                     name: "Death",
-                    y: death,
+                    y: Math.round(((death / totalCase) * 100)),
                 }],
             }
         ],
@@ -211,32 +99,38 @@ export const CaseSharePercentange = createStore({
     storeID: "#CaseSharePercentange",
     Component: ({ state }) => {
         const styl = Styles();
-        const onFilterChange = (evt, caseBy) => {
-            if (!caseBy) return;
-            StoreManager.update("#CaseSharePercentange", {
-                caseBy
-            })
-        }
+        const totalCase = state.data.reduce((a, b) => a + b["total_cases"], 0);
+        const activeCase = state.data.reduce((a, b) => a + b["active_cases"], 0);
+        const cured = state.data.reduce((a, b) => a + b["cured_discharged"], 0);
+        const death = state.data.reduce((a, b) => a + b["death"], 0);
         return (
-            <Grid item sm={8} md={12} style={{ padding: 0 }}>
-                <Paper elevation={0} className={styl.titleContainer}>
-                    <ToggleButtonGroup
-                        className={styl.toggleButtonGroup}
-                        value={state.caseBy}
-                        exclusive
-                        onChange={onFilterChange}
-                        aria-label="text alignment"
-                    >
-                        <ToggleButton className={styl.btnToggle} value="Share" aria-label="left aligned">Share
-                        </ToggleButton>
-                        <ToggleButton className={styl.btnToggle} value="Percent" aria-label="centered">Percent
-                        </ToggleButton>
-                    </ToggleButtonGroup>
-                </Paper>
-                {
-                    state.data && state.caseBy === "Share" ? <DonutChart {...state} /> : <GaugeChart {...state} />
-                }
-            </Grid>
+            <Fragment>
+                <DonutChart totalCase={totalCase} cured={cured} death={death} {...state} />
+                <div className={styl.percentageContainer}>
+                    <div className={styl.percentageRow}>
+                        <Typography className={`${styl.percentageColumn} ${styl.percentageNumber}`} variant="h6">
+                            {Math.round((((totalCase - (cured + death)) / totalCase) * 100))}%
+                        </Typography>
+                        <Typography className={`${styl.percentageColumn} ${styl.percentageNumber}`} variant="h6">
+                            {Math.round(((cured / totalCase) * 100))}%
+                        </Typography>
+                        <Typography className={`${styl.percentageColumn} ${styl.percentageNumber}`} variant="h6">
+                            {Math.round(((death / totalCase) * 100))}%
+                        </Typography>
+                    </div>
+                    <div className={styl.percentageRow}>
+                        <span className={styl.percentageColumn}>
+                            Active
+                        </span>
+                        <span className={styl.percentageColumn}>
+                            Cured
+                        </span>
+                        <span className={styl.percentageColumn}>
+                            Death
+                        </span>
+                    </div>
+                </div>
+            </Fragment>
         )
     },
     state: {

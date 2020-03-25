@@ -38,11 +38,9 @@ export const Filter = createStore({
                                     onChange={onFilterChange}
                                     aria-label="text alignment"
                               >
-                                    <ToggleButton value="total_cases" aria-label="left aligned">All
+                                    <ToggleButton value="total_cases" aria-label="left aligned">Confirmed
                                     </ToggleButton>
-                                    <ToggleButton value="total_confirmed_indian_nationals" aria-label="left aligned">Indians
-                                    </ToggleButton>
-                                    <ToggleButton value="total_confirmed_foreign_nationals" aria-label="centered">Foreigners
+                                    <ToggleButton value="active_cases" aria-label="left aligned">Active
                                     </ToggleButton>
                                     <ToggleButton value="cured_discharged" aria-label="centered">Cured
                                     </ToggleButton>

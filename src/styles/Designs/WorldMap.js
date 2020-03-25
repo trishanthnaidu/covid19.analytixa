@@ -11,7 +11,7 @@ export const Styles = makeStyles(theme => ({
             transition: "fill 0.3s ease",
             strokeWidth: 0.1,
             strokeLinecap: "round",
-            stroke: theme.background["00"],
+            stroke: fade(theme.background["00"], 0.5),
       },
       grayStates: {
             outline: "none",
@@ -26,12 +26,12 @@ export const Styles = makeStyles(theme => ({
 
       },
       paperWorldMap: {
-            height: "80vh",
+            height: theme.isMobile ? "60vh" : "80vh",
             backgroundColor: theme.background["00"],
             borderRadius: 10,
 
             "& svg": {
-                  marginTop: !theme.isMobile && -50,
+                  marginTop: theme.isMobile ? 25 : -50,
                   marginLeft: !theme.isMobile && -35,
                   transform: theme.isMobile ? "scale(1)" : "scale(1.4)",
             },
@@ -56,10 +56,14 @@ export const Styles = makeStyles(theme => ({
             alignItems: "flex-end"
       },
       labelTotalCasesHeader: {
-            color: theme.text[40]
+            color: theme.text[50]
       },
       labelTotalCasesText: {
             fontSize: 25,
+            color: theme.palette.primary.main
+      },
+      quickViewsTotalCases: {
+            fontSize: 40,
             color: theme.palette.primary.main
       }
 }))

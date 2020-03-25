@@ -1,4 +1,5 @@
 import { makeStyles, fade } from "@material-ui/core/styles";
+import { AgGridStyles } from './gridStyle';
 
 export const Styles = makeStyles(theme => ({
       root: {
@@ -15,10 +16,10 @@ export const Styles = makeStyles(theme => ({
             backgroundColor: "transparent",
             margin: "0 20px",
             flex: 1,
-            justifyContent: "flex-end",
+            justifyContent: theme.isMobile ? "center" : "flex-end",
 
             "& button": {
-                  padding: !theme.isMobile && "0px 15px",
+                  padding: "0px 15px",
                   height: 32,
                   fontSize: theme.typography.body1.fontSize,
                   backgroundColor: fade(theme.background["00"], 0.5),
@@ -70,6 +71,7 @@ export const Styles = makeStyles(theme => ({
             borderTopRightRadius: 10,
             borderTopLeftRadius: 10,
             alignItems: "center",
+            width: theme.isMobile && "90vw",
 
             "& button": {
                   backgroundColor: theme.background[40],
@@ -125,10 +127,10 @@ export const Styles = makeStyles(theme => ({
             flexDirection: "column",
             display: "inline-flex",
             margin: "1vw",
-            width: theme.isMobile ? "91vw" : "50vw"
+            width: theme.isMobile ? "90vw" : "50vw"
       },
       mapContainer: {
-            width: theme.isMobile && "91vw",
+            width: theme.isMobile && "90vw",
             display: "flex",
             flexDirection: "column",
             borderRadius: 10,
@@ -149,12 +151,32 @@ export const Styles = makeStyles(theme => ({
       },
       // Top Bottom
       topAndBottomContainer: {
-            width: theme.isMobile ? "91vw" : "22vw",
-            height: theme.isMobile ? 400 : 325,
+            width: theme.isMobile ? "90vw" : "22vw",
+            height: theme.isMobile ? 750 : 325,
             display: "inline-flex",
             flexDirection: "column",
-            backgroundColor: "#fed8d2",
+            backgroundColor: theme.background["00"],
             flexDirection: "column",
+            margin: "1vw",
+            borderRadius: 10,
+
+            "& div.ag-root": {
+                  border: "none",
+                  borderRadius: 10,
+
+                  "& div.ag-header-container": {
+                        color: theme.palette.primary.main,
+                        backgroundColor: theme.background[30]
+                  },
+            }
+      },
+      shareContainer: {
+            width: theme.isMobile ? "90vw" : "22vw",
+            height: theme.isMobile ? 365 : 325,
+            display: "inline-flex",
+            flexDirection: "column",
+            backgroundColor: theme.background["00"],
+            flexDirection: theme.isMobile ? "row" : "column",
             margin: "1vw",
             borderRadius: 10,
       },
@@ -240,14 +262,16 @@ export const Styles = makeStyles(theme => ({
       },
       totalActiveCasesContainer: {
             backgroundColor: theme.background["00"],
+            justifyContent: "center"
       },
       caseAnalysisContainer: {
             backgroundColor: theme.background["00"],
-            width: theme.isMobile ? "91vw": "46vw",
+            width: theme.isMobile ? "90vw" : "46vw",
             height: 350
       },
       paperPieChart: {
             backgroundColor: "transparent",
+            width: "90vw",
 
             "& div.highcharts-container svg .highcharts-background": {
                   fill: "transparent",
@@ -281,5 +305,60 @@ export const Styles = makeStyles(theme => ({
             alignItems: "center",
             height: 300,
             color: theme.text[50]
+      },
+      quickViewsContainer: {
+            justifyContent: "space-between",
+            flexDirection: "row",
+            display: "inline-flex",
+            margin: "1vw",
+            width: theme.isMobile ? "90vw" : "50vw"
+      },
+      quickViews: {
+            width: "25vw",
+            height: 80,
+            justifyContent: "center",
+            textAlign: "center"
+      },
+      labelTotalCasesHeader: {
+            color: theme.text[30]
+      },
+      quickViewsActiveCases: {
+            fontSize: 25,
+            fontWeight: "300",
+            color: fade(theme.palette.primary.main, 0.85)
+      },
+      quickViewsCuredCases: {
+            fontSize: 25,
+            fontWeight: "300",
+            color: theme.palette.primary.main
+      },
+      quickViewsDeceasedCases: {
+            fontSize: 25,
+            fontWeight: "300",
+            color: fade(theme.palette.primary.main, 0.5)
+      },
+      agGridRoot: {
+            height: 750,
+            width: '90vw',
+            borderRadius: 10
+      },
+      percentageContainer: {
+            width: "100%",
+            display: "flex",
+            flexDirection: "column"
+      },
+      percentageRow: {
+            margin: "5px 5vw",
+            display: "flex",
+            justifyContent: "space-around",
+      },
+      percentageColumn: {
+            display: "inline-flex",
+            color: theme.text[30],
+      },
+      percentageNumber: {
+            color: theme.palette.primary.main,
+            fontWeight: "300",
+            fontSize: 25
       }
 }))

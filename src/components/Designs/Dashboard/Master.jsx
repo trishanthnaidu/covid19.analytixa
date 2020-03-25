@@ -42,11 +42,11 @@ const DashboardComponent = ({
                                     <Grid container className={styl.topAndBottomContainer}>
                                           <TopBottomFilter {...state} />
                                     </Grid>
-                                    <Grid container className={`${styl.topAndBottomContainer} ${styl.totalActiveCasesContainer}`}>
+                                    <Grid container className={`${styl.shareContainer} ${styl.totalActiveCasesContainer}`}>
                                           <CaseSharePercentange {...state} />
                                     </Grid>
                               </div>
-                              <Grid container className={`${styl.topAndBottomContainer} ${styl.caseAnalysisContainer}`}>
+                              <Grid container className={`${styl.shareContainer} ${styl.caseAnalysisContainer}`}>
                                     <CaseAnalysis {...state} />
                               </Grid>
                         </div>
