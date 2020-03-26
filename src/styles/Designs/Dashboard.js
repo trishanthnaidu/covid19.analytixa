@@ -365,7 +365,7 @@ export const Styles = makeStyles(theme => ({
             justifyContent: "space-between",
             flexDirection: "row",
             display: "inline-flex",
-            margin: "2vh 1vw",
+            margin: "1vh 1vw 0",
             width: theme.isMobile ? "90vw" : "50vw"
       },
       quickViews: {
