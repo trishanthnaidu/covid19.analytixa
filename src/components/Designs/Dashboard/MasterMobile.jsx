@@ -16,7 +16,8 @@ import { Styles } from '../../../styles/Designs/Dashboard';
 import { Filter } from './FilterSeletion';
 import { Maps } from './IndianMap';
 import { TopBottomFilter } from './TopBottomFilterSelection';
-import { CaseAnalysis } from './CaseAnalysis';
+import { TrendLineFilter } from './TrendSelectionFilter';
+import { TrendAnalysis } from './TrendAnalysis';
 import { CaseSharePercentange } from './CaseSharePercentange';
 
 const labelMaps = {
@@ -96,13 +97,21 @@ const DashboardComponent = ({
                         <MapsInsights {...state} />
                     </div>
                 </Grid>
+                <Grid container className={styl.gridContainer}>
+                    <div className={styl.mapContainer}>
+                        <div className={styl.mapFiterContainer}>
+                            <TrendLineFilter />
+                            <TrendAnalysis />
+                        </div>
+                    </div>
+                </Grid>
                 <div className={styl.statsticalAnalysisContainer}>
                     <div className={styl.columnContainer}>
-                        <Grid container className={styl.topAndBottomContainer}>
-                            <TopBottomFilter {...state} />
-                        </Grid>
                         <Grid container className={`${styl.shareContainer} ${styl.totalActiveCasesContainer}`}>
                             <CaseSharePercentange {...state} />
+                        </Grid>
+                        <Grid container className={styl.topAndBottomContainer}>
+                            <TopBottomFilter {...state} />
                         </Grid>
                     </div>
                 </div>

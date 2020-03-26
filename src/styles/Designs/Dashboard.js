@@ -14,7 +14,7 @@ export const Styles = makeStyles(theme => ({
       },
       toggleButtonGroup: {
             backgroundColor: "transparent",
-            margin: "0 20px",
+            margin: "0 15px",
             flex: 1,
             justifyContent: theme.isMobile ? "center" : "flex-end",
 
@@ -36,6 +36,11 @@ export const Styles = makeStyles(theme => ({
             "& .MuiToggleButton-root:hover": {
                   backgroundColor: theme.background["00"],
             }
+      },
+      toggleButtonGroupTrend: {
+            "& button": {
+                  padding: "0px 10px",
+            },
       },
       btnToggle: {
             flex: 1
@@ -120,13 +125,24 @@ export const Styles = makeStyles(theme => ({
       popover_Paper: {
             backgroundColor: theme.background["00"],
             color: theme.text[30],
-            height: 500
+            maxheight: 500,
+
+            "& li": {
+                  minHeight: 40
+            }
       },
       gridContainer: {
             justifyContent: "space-between",
             flexDirection: "column",
             display: "inline-flex",
-            margin: "1vw",
+            margin: "2vh 1vw",
+            width: theme.isMobile ? "90vw" : "50vw"
+      },
+      trendContainer: {
+            justifyContent: "flex-end",
+            flexDirection: "column",
+            display: "inline-flex",
+            margin: "10px 0 20px",
             width: theme.isMobile ? "90vw" : "50vw"
       },
       mapContainer: {
@@ -140,6 +156,7 @@ export const Styles = makeStyles(theme => ({
             display: "inline-flex",
             justifyContent: theme.isMobile ? "center" : "space-between",
             zIndex: 10,
+            flexDirection: "column"
       },
       title: {
             padding: "5px 25px",
@@ -157,7 +174,7 @@ export const Styles = makeStyles(theme => ({
             flexDirection: "column",
             backgroundColor: theme.background["00"],
             flexDirection: "column",
-            margin: "1vw",
+            margin: "2vh 1vw",
             borderRadius: 10,
 
             "& div.ag-root": {
@@ -177,7 +194,7 @@ export const Styles = makeStyles(theme => ({
             flexDirection: "column",
             backgroundColor: theme.background["00"],
             flexDirection: theme.isMobile ? "row" : "column",
-            margin: "1vw",
+            margin: "2vh 1vw",
             borderRadius: 10,
       },
       topSelection: {},
@@ -239,13 +256,29 @@ export const Styles = makeStyles(theme => ({
       },
       statsticalAnalysisContainer: {
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            mrgin: "2vh 1vw"
       },
       columnContainer: {
             display: "flex",
             flexDirection: theme.isMobile ? "column" : "row"
       },
       titleContainer: {
+            backgroundColor: theme.background[30],
+            display: "flex",
+            height: 60,
+            justifyContent: "space-between",
+            borderRadius: 0,
+            borderTopRightRadius: 10,
+            borderTopLeftRadius: 10,
+            alignItems: "center",
+
+            "& button": {
+                  backgroundColor: theme.background[40],
+                  color: theme.text[50]
+            }
+      },
+      trendContainer: {
             backgroundColor: theme.background[30],
             display: "flex",
             height: 60,
@@ -299,6 +332,24 @@ export const Styles = makeStyles(theme => ({
                   fontSize: 18
             }
       },
+      btnTrendGranularitySelection: {
+            padding: "0 15px",
+            textTransform: "capitalize",
+            color: theme.text[30],
+            backgroundColor: fade(theme.background["00"], 0.5),
+            border: "transparent",
+            fontSize: theme.typography.body1.fontSize,
+            height: 32,
+            margin: "0 20px",
+
+            "&:hover": {
+                  backgroundColor: theme.background["00"],
+            },
+
+            "& svg": {
+                  fontSize: 18
+            }
+      },
       comingSoon: {
             display: "flex",
             justifyContent: "center",
@@ -310,7 +361,7 @@ export const Styles = makeStyles(theme => ({
             justifyContent: "space-between",
             flexDirection: "row",
             display: "inline-flex",
-            margin: "1vw",
+            margin: "2vh 1vw",
             width: theme.isMobile ? "90vw" : "50vw"
       },
       quickViews: {
@@ -338,7 +389,7 @@ export const Styles = makeStyles(theme => ({
             color: fade(theme.palette.primary.main, 0.5)
       },
       agGridRoot: {
-            height: 750,
+            height: 800,
             width: '90vw',
             borderRadius: 10
       },
@@ -360,5 +411,37 @@ export const Styles = makeStyles(theme => ({
             color: theme.palette.primary.main,
             fontWeight: "300",
             fontSize: 25
+      },
+      paperSimpleArea: {
+            width: theme.isMobile ? "90vw" : "75vw",
+            height: 375,
+            padding: "30px 0",
+            borderRadius: 10,
+            backgroundColor: theme.background["00"],
+
+            "& div.highcharts-container": {
+                  marginTop: theme.isMobile ? 0 : -10
+            },
+
+            "& div.highcharts-container svg .highcharts-background": {
+                  fill: "transparent",
+            },
+
+            "& div.highcharts-container svg path.highcharts-crosshair": {
+                  stroke: fade(theme.palette.primary.main, 0.075),
+            }
+      },
+      trendContainer: {
+            display: "flex",
+            justifyContent: "flex-end"
+      },
+      consistentSwitchLabel: {
+            color: theme.text[30],
+            fontSize: 12
+      },
+      trendNote: {
+            fontSize: 12,
+            color: theme.text[40],
+            padding: 10
       }
 }))

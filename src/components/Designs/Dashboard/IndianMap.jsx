@@ -58,7 +58,7 @@ export const Maps = ({
                   </div>
             )
       }
-      debugger;
+      
       return (
             <div className={styl.root}>
                   <Paper elevation={0} className={styl.paperWorldMap}>

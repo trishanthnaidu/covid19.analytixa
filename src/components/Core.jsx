@@ -26,6 +26,7 @@ export {
       Icon,
       Drawer,
       SwipeableDrawer,
+      FormControlLabel
 } from '@material-ui/core';
 
 export {

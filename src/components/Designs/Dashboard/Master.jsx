@@ -14,9 +14,10 @@ import { createStore, StoreManager } from '@rootzjs/store';
 
 import { Styles } from '../../../styles/Designs/Dashboard';
 import { Filter } from './FilterSeletion';
+import { TrendLineFilter } from './TrendSelectionFilter';
 import { Maps } from './IndianMap';
 import { TopBottomFilter } from './TopBottomFilterSelection';
-import { CaseAnalysis } from './CaseAnalysis';
+import { TrendAnalysis } from './TrendAnalysisis';
 import { CaseSharePercentange } from './CaseSharePercentange';
 
 const DashboardComponent = ({
@@ -47,9 +48,19 @@ const DashboardComponent = ({
                                     </Grid>
                               </div>
                               <Grid container className={`${styl.shareContainer} ${styl.caseAnalysisContainer}`}>
-                                    <CaseAnalysis {...state} />
+                                    <TrendAnalysis {...state} />
                               </Grid>
                         </div>
+                        <Grid container className={styl.trendContainer}>
+                              <div className={styl.mapContainer}>
+                                    <div className={styl.mapFiterContainer}>
+                                          <Typography className={styl.title} variant="h6" color="inherit">
+                                                Affected Areas
+                                          </Typography>
+                                    </div>
+                                    <TrendLineFilter />
+                              </div>
+                        </Grid>
                   </div>
             </Fragment>
       )

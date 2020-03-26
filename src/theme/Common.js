@@ -49,7 +49,7 @@ export const commonThemeStyles = selectedTheme => ({
             ],
             body1: {
                   fontSize: PRIMARY_FONT_SIZE,
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
             },
             h6: {
                   fontSize: 15,

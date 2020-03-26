@@ -32,10 +32,11 @@ export const TopBottomFilter = createStore({
                   <div className={`${styl.agGridRoot} ag-theme-balham`} >
                         <AgGridReact
                               columnDefs={[
-                                    { headerName: "State", field: "state_name", width: 300, cellStyle: { color: theme.text[50] }, sortable: true },
-                                    { headerName: "Active", field: "active_cases", cellStyle: { color: theme.text[30] }, sortable: true, sort: 'desc' },
-                                    { headerName: "Cured", field: "cured_discharged", cellStyle: { color: theme.text[30] }, sortable: true },
-                                    { headerName: "Death", field: "death", cellStyle: { color: theme.text[30] }, sortable: true }
+                                    { headerName: "State", field: "state_name", width: 300, cellStyle: { color: theme.text[20] }, sortable: true },
+                                    { headerName: "Confirmed", field: "total_cases", cellStyle: { color: theme.text[30] }, sortable: true, sort: 'desc' },
+                                    { headerName: "Active", field: "active_cases", width: 175, cellStyle: { color: theme.text[30] }, sortable: true },
+                                    { headerName: "Cured", field: "cured_discharged", width: 175, cellStyle: { color: theme.text[30] }, sortable: true },
+                                    { headerName: "Death", field: "death", width: 175, cellStyle: { color: theme.text[30] }, sortable: true }
                               ]}
                               rowData={state.data}
                               onGridReady={params => {

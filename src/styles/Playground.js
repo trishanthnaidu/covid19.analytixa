@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export const Styles = makeStyles(theme => ({
       root: {
             width: "100vw",
-            height: "92vh",
+            height: theme.isMobile ? "87vh" : "92vh",
             padding: "12px 15px",
             boxSizing: "border-box",
             marginTop: 50,

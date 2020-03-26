@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Dashboard } from '../Designs/Dashboard/Master';
+// import { Dashboard } from '../Designs/Dashboard/Master';
 import { Dashboard as DashboardMobile } from '../Designs/Dashboard/MasterMobile';
 import { useTheme } from '../Core';
 import { Styles } from '../../styles/Playground';
@@ -52,7 +52,7 @@ const Component = ({ props, state }) => {
                   <div id="main-container" className={styl.root}>
                         {
                               state.isMounted ?
-                                    theme.isMobile ? <DashboardMobile {...state} /> : <Dashboard {...state} />
+                                    theme.isMobile && <DashboardMobile {...state} /> // : <Dashboard {...state} />
                                     :
                                     <div>Fetching Data</div>
                         }
