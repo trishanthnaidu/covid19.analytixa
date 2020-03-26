@@ -185,6 +185,10 @@ export const Styles = makeStyles(theme => ({
                         color: theme.palette.primary.main,
                         backgroundColor: theme.background[30]
                   },
+
+                  "& div.ag-row-hover": {
+                        backgroundColor: fade(theme.palette.primary.main, 0.15)
+                  }
             }
       },
       shareContainer: {
